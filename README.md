@@ -43,7 +43,7 @@ $make install
 ```
 
 3. create database `sqlite3 chatbotdude.db`. I named my database as 'chatbotdude'
-4. create table by run `sqlite3` in command line then use this query to create table
+4. create table by run `sqlite3 chatbotdude` in command line then use this query to create table
 
 ```
 CREATE TABLE TODO(
