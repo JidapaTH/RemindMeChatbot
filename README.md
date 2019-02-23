@@ -22,7 +22,7 @@ A webhook server is necessary as it is used as a portal to Wit.ai and Facebook m
 
 *** Check out their link here for the installation --> https://ngrok.com/
 
-2. once the installation is done, run a command `ngrok http 3000` to open server in port 3000.
+2. once the installation is done, run a command `screen` to create a session for ngrok in Linux machine. Then navigates to where I installed ngrok and run `./ngrok http 3000` to open server in port 3000. Use `Ctrl+a D` to detach from the screen.
 
 ### Create Facebook App
 
