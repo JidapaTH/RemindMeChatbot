@@ -1,5 +1,5 @@
 # RemindMeChatbot
-Build Facebook Messenger chatbot by using Wit.ai
+Build Facebook Messenger chatbot by using Wit.ai. The server is hosted in EC2 cloud computing machine. The operation system is CentOS.
 
 ### prerequisite
 1. Install Node.js https://nodejs.org/en/
@@ -30,3 +30,27 @@ A webhook server is necessary as it is used as a portal to Wit.ai and Facebook m
 ### Backend
 
 I picked SQLite as my chatbot backend to keep my TODO list. The reason is because SQLite is one of the most basic database to work with and my data load will be very tiny. 
+
+1. `wget https://www.sqlite.org/2019/sqlite-autoconf-3270100.tar.gz` in command line to download SQLite
+2. unzip file and install
+
+```
+$tar xvfz sqlite-autoconf-3270100.tar.gz
+$cd ssqlite-autoconf-3270100
+$./configure --prefix=/usr/local
+$make
+$make install
+```
+
+3. create database `sqlite3 chatbotdude.db`. I named my database as 'chatbotdude'
+4. create table by run `sqlite3` in command line then use this query to create table
+
+```
+CREATE TABLE TODO(
+   id INTEGER PRIMARY KEY     AUTOINCREMENT,
+   user           TEXT    NOT NULL,
+   class          TEXT     NOT NULL,
+   item           TEXT,
+   due            TEXT
+);
+```
