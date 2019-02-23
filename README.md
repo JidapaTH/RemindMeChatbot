@@ -25,3 +25,8 @@ A webhook server is necessary as it is used as a portal to Wit.ai and Facebook m
 2. once the installation is done, run a command `ngrok http 3000` to open server in port 3000.
 
 ### Create Facebook App
+
+
+### Backend
+
+I picked SQLite as my chatbot backend to keep my TODO list. The reason is because SQLite is one of the most basic database to work with and my data load will be very tiny. 
