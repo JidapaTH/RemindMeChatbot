@@ -15,6 +15,7 @@ try {
     log = require('node-wit').log;
   }
 var config = require('./config/config.json');
+var handlers = require('./handlers/handlers.js');
 // const WIT_TOKEN = process.env.WIT_TOKEN;
 const WIT_TOKEN = config.witToken;
 // const FB_PAGE_TOKEN = process.env.FB_PAGE_TOKEN;
@@ -79,7 +80,7 @@ const VERIFYTOKEN = config.verifyToken;
     // See the Webhook reference
     // https://developers.facebook.com/docs/messenger-platform/webhook-reference
     const data = req.body;
-  
+    console.log(data);
     if (data.object === 'page') {
       data.entry.forEach(entry => {
         entry.messaging.forEach(event => {
@@ -87,12 +88,10 @@ const VERIFYTOKEN = config.verifyToken;
             // Yay! We got a new message!
             // We retrieve the Facebook user ID of the sender
             const sender = event.sender.id;
+            console.log(sender);
+            // Check sender
   
-            // We could retrieve the user's current session, or create one if it doesn't exist
-            // This is useful if we want our bot to figure out the conversation history
-            // const sessionId = findOrCreateSession(sender);
-  
-            // We retrieve the message content
+            // retrieve the message content
             const {text, attachments} = event.message;
             
             
@@ -102,14 +101,17 @@ const VERIFYTOKEN = config.verifyToken;
               fbMessage(sender, 'Sorry I can only process text messages for now.')
               .catch(console.error);
             } else if (text) {
+              
               // We received a text message
               // Let's run /message on the text to extract some entities
               wit.message(text).then(({entities}) => {
                 // You can customize your response to these entities
-                console.log('get text',text)
-                console.log(entities.datetime[0].value);
+                
+                // console.log('get text','Yippy')
+                // console.log(entities.getall[0].value);
                 // For now, let's reply with another automatic message
-                fbMessage(sender, `We've received your message: ${text}.`);
+                // fbMessage(sender, `We've received your message: ${text}.`);
+                fbMessage(sender, handlers.getAll(sender,entities));
               })
               .catch((err) => {
                 console.error('Oops! Got an error from Wit: ', err.stack || err);
