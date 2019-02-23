@@ -16,4 +16,12 @@ A webhook server is necessary as it is used as a portal to Wit.ai and Facebook m
 3. create "index.js". This file will be the main page to connect with other things 
 4. to run the server. run `node index.js`
 
+### set up for https
+
+1. Facebook requires https. In this case, I have to use ngrok for my server.
+
+*** Check out their link here for the installation --> https://ngrok.com/
+
+2. once the installation is done, run a command `ngrok http 3000` to open server in port 3000.
+
 ### Create Facebook App
