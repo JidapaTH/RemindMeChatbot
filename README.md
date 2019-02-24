@@ -60,7 +60,7 @@ Teach Wit.ai
 <p align="center"> <img src="https://github.com/JidapaTH/RemindMeChatbot/blob/master/img/wit.GIF"  width="80%" height="80%" ></p>
 
 Train bot to detect specific keywords and their synonyms. In my case, this are the classes I had.
-<p align="center"> <img src="https://github.com/JidapaTH/RemindMeChatbot/blob/master/img/bot.GIF"  width="80%" height="80%" ></p>
+<p align="center"> <img src="https://github.com/JidapaTH/RemindMeChatbot/blob/master/img/keyword.GIF"  width="80%" height="80%" ></p>
 
 Check the understanding of our chatbot. If Wit.ai detect these entities such as assignment or datetime in Messenger message, it will tell us
 <p align="center"> <img src="https://github.com/JidapaTH/RemindMeChatbot/blob/master/img/bot.GIF"  width="80%" height="80%" ></p>
