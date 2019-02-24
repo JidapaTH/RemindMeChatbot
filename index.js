@@ -111,7 +111,36 @@ const VERIFYTOKEN = config.verifyToken;
                 // console.log(entities.getall[0].value);
                 // For now, let's reply with another automatic message
                 // fbMessage(sender, `We've received your message: ${text}.`);
-                fbMessage(sender, handlers.getAll(sender,entities));
+                if (entities.getall!= undefined) { 
+                  handlers.readFromDB(sender,entities).then(work=>{
+                    // fbMessage(sender, work[0]['class'] + "\n" + work[0]['due']);
+                    var groupw = Object.values( work.reduce( (acc, c) => {
+                      cc = c.class;
+                      var key = JSON.stringify({cc}); 
+
+                      if (acc[key]) {
+                        acc[key].item.push({item: c.item,due:c.due}); //if key is already set, then push the value in a
+                      } else {
+                        acc[key] = {'class': c.class}; ; //else set c as value for this key
+                        acc[key].item = [{item: c.item,due:c.due}];
+                      }
+                      return acc;
+                    },{}));
+                    console.log(groupw);
+                    groupw.forEach(function(course) {
+                      var text = "For " + course['class'] +" you have... ";
+                      for(let i=0; i< course['item'].length; i++){
+                        text = text + "\n" + course['item'][i]['due']+" "+ course['item'][i]['item']
+                      }
+                      fbMessage(sender,text);
+                    })
+                    
+                  })
+                  
+                } else {
+                  fbMessage(sender, handlers.getAll(sender,entities));
+                }
+                
               })
               .catch((err) => {
                 console.error('Oops! Got an error from Wit: ', err.stack || err);
