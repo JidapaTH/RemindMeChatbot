@@ -77,3 +77,4 @@ Ask my bot to show what tasks I have right now.
 - add delete feature
 - notifications
 - confirmation
+- Fix time conflict
